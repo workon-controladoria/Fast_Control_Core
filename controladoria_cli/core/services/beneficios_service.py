@@ -7,7 +7,7 @@ import zipfile
 # from controladoria_cli.core.config.account_mapping import MAPEAMENTO_BENEFICIOS
 
 # DEPOIS:
-from controladoria_cli.core.config.account_mapping import mapeamento_custo, mapeamento_despesa
+from ..config.account_mapping import mapeamento_custo, mapeamento_despesa
 
 CAMINHO_CONCATENACAO_ENTRADA = r"C:/Users/jose.santos/Desktop/CONTROLADORIA/Automacoes/Fast_Control/controladoria_cli/dados_beneficios/concatenacao"
 CAMINHO_CONCATENACAO_SAIDA = os.path.join(CAMINHO_CONCATENACAO_ENTRADA, "CONCAT")

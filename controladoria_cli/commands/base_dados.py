@@ -2,8 +2,8 @@ import pandas as pd
 from pathlib import Path
 from datetime import datetime
 
-from controladoria_cli.core.config import settings
-from controladoria_cli.core.services.base_dados_service import BaseDadosService
+from ..core.config import settings
+from ..core.services.base_dados_service import BaseDadosService
 
 # --- CAMINHO DE SAÍDA PARA VOCÊ PREENCHER ---
 # Coloque o caminho completo para a sua pasta de destino dentro das aspas.

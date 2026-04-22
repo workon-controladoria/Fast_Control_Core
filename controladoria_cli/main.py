@@ -1,7 +1,7 @@
 from colorama import Fore
-from controladoria_cli.commands import base_dados
-from controladoria_cli.commands import transitorias 
-from controladoria_cli.commands import beneficios
+from .commands import base_dados
+from .commands import beneficios
+from .commands import transitorias
 
 def exibir_menu():
     """Exibe o menu principal de opções para o usuário."""
