@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "controladoria-cli"
+version = "0.1.0"
+description = "Ferramenta de CLI para automação de tarefas da controladoria."
+readme = "README.md"
+packages = [{ include = "controladoria_cli" }]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pandas = "^2.2.2"
+pyodbc = "^5.1.0"
+pydantic-settings = "^2.3.4"
+xlsxwriter = "^3.2.0"
+colorama = "^0.4.6"
+openpyxl = "^3.1.5"
+
+[tool.poetry.scripts]
+fast-control = "controladoria_cli.main:main"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+

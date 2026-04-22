@@ -1,0 +1,37 @@
+.env
+pycache/
+*.pyc
+.venv
+venv/
+__pycache__/
+*.pyo
+*.pyd
+
+# IDE/Editor
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Data/Spreadsheets
+*.xlsx
+*.xls
+*.xlsm
+*.xlsb
+*.csv
+
+# Project outputs
+controladoria_cli/dados_aps/output_dados_aps/
+controladoria_cli/dados_aps/output_dados_base_aps/
+controladoria_cli/dados_beneficios/concatenacao/CONCAT/
+controladoria_cli/dados_beneficios/rateio/*.xlsx
+
+# Local data inputs (avoid committing local paths referenced in code)
+controladoria_cli/dados_aps/data_base_de_aps.xlsx
+controladoria_cli/dados_beneficios/concatenacao/**
+controladoria_cli/dados_beneficios/rateio/**
