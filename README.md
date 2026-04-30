@@ -11,14 +11,15 @@ Automação confiável e rápida de rotinas da Controladoria via terminal intera
 
 ---
 
+
 ## 🧭 Visão Geral
 - 1️⃣ Base de Dados: extração de APs direto do SQL Server por período (competência).
 - 2️⃣ Benefícios: concatenação de planilhas e geração de planilha de rateio por benefício.
 - 3️⃣ Transitórias: extração por APS a partir de base local com mapeamento custo/despesa → conta contábil.
+- 4️⃣ Provisões: geração de lançamentos de provisão e reversão para ERP a partir de planilha horizontal.
 
 ---
 
-## 📚 Sumário
 - [📦 Requisitos](#-requisitos)
 - [⚙️ Instalação](#️-instalação)
 - [🔐 Configuração (.env)](#-configuração-env)
@@ -92,12 +93,14 @@ python controladoria_cli/main.py
 python -c "from controladoria_cli.main import main; main()"
 ```
 
+
 Menu interativo esperado:
 ```
 --- FAST CONTROL ---
 1 - Base de Dados: Extrair APs
 2 - Benefícios
 3 - Transitórias: Extrair APs com Mapeamento
+4 - Provisões
 0 - Sair
 ```
 
@@ -150,9 +153,22 @@ O que faz:
 - Gera coluna `conta contabil` a partir de `NATUREZA` e `CUSTO OU DESPESA`
 - Oferece salvar o resultado (Excel) na pasta configurada
 
+
 Configurações importantes no serviço:
 - `CAMINHO_ARQUIVO_ENTRADA`: caminho para `data_base_de_aps.xlsx`
 - `CAMINHO_PASTA_SAIDA`: pasta onde os resultados serão gravados
+
+### 4️⃣ Provisões: Geração de Lançamentos ERP
+- Menu: `controladoria_cli/commands/provisoes.py`
+- Serviço: `controladoria_cli/core/services/provisoes_service.py`
+
+O que faz:
+- Lê planilha horizontal de provisões (clientes x valores).
+- Aplica de-para contábil e gera lançamentos verticais para ERP (provisão e reversão).
+- Salva arquivo Excel com abas por empresa/filial.
+
+Configurações importantes no serviço:
+- Caminho do arquivo de entrada e saída ajustável no topo do script.
 
 ---
 
@@ -166,6 +182,7 @@ controladoria_cli/
     base_dados.py                # Automatiza extração de APs via SQL Server
     beneficios.py                # Submenu de benefícios e chamada de serviços
     transitorias.py              # Extração de APs transitórias com mapeamento
+    provisoes.py                 # Geração de lançamentos de provisão/reversão para ERP
   core/
     __init__.py                  # Marca o subpacote core
     config/
@@ -177,6 +194,7 @@ controladoria_cli/
       base_dados_service.py      # Conexões SQL, queries e processamento das APs
       beneficios_service.py      # Concatenação e geração de rateio de benefícios
       transitorias_services.py   # Filtragem de APS e criação da conta contábil
+      provisoes_service.py       # Processamento de provisões e geração de lançamentos ERP
   dados_aps/
     data_base_de_aps.xlsx         # Base local de APs usada pelo módulo de Transitórias
     output_dados_aps/             # Saída dos arquivos de Transitórias
@@ -276,6 +294,14 @@ requirements.txt
 - Inclui tratamento de arquivos inválidos e avisos de colunas faltantes.
 
 ### `controladoria_cli/core/services/transitorias_services.py`
+### `controladoria_cli/core/services/provisoes_service.py`
+- `processar_planilha_provisoes(caminho_arquivo, ano, mes)`:
+  - Lê planilha horizontal de provisões.
+  - Aplica de-para contábil e gera lançamentos de provisão e reversão.
+  - Retorna DataFrame pronto para exportação.
+- `salvar_layout_erp_por_empresa(df, filename)`:
+  - Salva o DataFrame em Excel, criando uma aba para cada empresa/filial.
+  - Aplica formatação automática e destaca cabeçalhos.
 - `processar_extracao_aps_transitarias(valores_aps)`:
   - Lê arquivo Excel de entrada `CAMINHO_ARQUIVO_ENTRADA`.
   - Filtra linhas pela coluna `APS`.

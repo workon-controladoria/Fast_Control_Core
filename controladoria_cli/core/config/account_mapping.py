@@ -34,6 +34,7 @@ Conta_custo = {
     "40377":{"nome": "AJ", "natureza": ["AJ", "VT", "PJ"]},
     "40543":{"nome": "OB", "natureza": ["OB"]},
     "50385":{"nome": "Taxa", "natureza": ["Taxa"]},
+    "40540":{"nome": "PRESTACAO DE SERVICOS", "natureza": ["C-PRESTAO DE SERVIOS", "D-PRESTAO DE SERVIOS", "C-PRESTACAO DE SERVICOS", "D-PRESTACAO DE SERVICOS"]},
 
 
 }
@@ -41,7 +42,7 @@ Conta_custo = {
 conta_despesa = {
     "50159": {"despesa": "PREMIOS E GRATIFICACOES", "natureza": ["C-PREMIOS/INCENTIVOS", "D-PREMIOS/INCENTIVOS", "C-DO IT"]},
     "50160": {"despesa": "SEGURO DE VIDA EM GRUPO", "natureza": ["SEGURO DE VIDA"]},
-    "50179": {"despesa": "ASSISTENCIA MEDICA E ODONTOLOGICA", "natureza": ["ASSISTNCIA MDICA", "ASSISTENCIA MEDICA", "ASSISTENCIA ODONTOLOGICA", "ASSISTENCIA ODONT", "ASSISTNCIA MDICA - INTERNOS"]},
+    "50179": {"despesa": "ASSISTENCIA MEDICA E ODONTOLOGICA", "natureza": ["ASSISTNCIA ODONTOLGICA - CLT","ASSISTNCIA MDICA", "ASSISTENCIA MEDICA", "ASSISTENCIA ODONTOLOGICA", "ASSISTENCIA ODONT", "ASSISTNCIA MDICA - INTERNOS"]},
     "50201": {"despesa": "MANUTENÇÃO DE INSTALAÇÕES", "natureza": ["CONSERVACAO E MANUTE", "CONSERVACAO E MANUTENCAO", "D-CONSERVACAO E MANUTENCAO", "C-CONSERVACAO E MANUTENCAO"]},
     "50205": {"despesa": "FRETES E CARRETOS", "natureza": ["D-MOTOBOY"]},
     "50208": {"despesa": "CURSOS E TREINAMENTOS", "natureza": ["D-CURSOS DE FORMAÇÃO PROFISSIONAL", "D-CURSO DE FORMACAO PROFISSIONAL", "D-ESTAGIARIO"]},
@@ -78,6 +79,7 @@ conta_despesa = {
     "50178":{"nome": "VT", "natureza": ["VT"]},
     "50323":{"nome": "OB", "natureza": ["OB"]},
     "50385":{"nome": "Taxa", "natureza": ["Taxa"]},
+    "50920":{"nome": "PRESTACAO DE SERVICOS", "natureza": ["D-MAO OBRA DE TERCEIRO", "C-MAO OBRA DE TERCEIRO"]},
 }
 
 try:
